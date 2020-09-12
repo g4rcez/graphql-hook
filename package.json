@@ -19,7 +19,7 @@
     "commander": "^5.1.0",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^14.0.1",
