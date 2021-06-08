@@ -13,7 +13,10 @@ bash install.sh
 ### How to use
 
 ```bash
-gqlhook --port 1337 --endpoint http://localhost:4000 --headers 'key:"value"' -H 'key:[1,2,3,4,5,6,7]' -H 'authorization:{"object": "key", "value": 5}'
+gqlhook --port 1337 --endpoint GRAPHQL_API \
+--headers 'key:"value"' \
+-H 'key:[1,2,3,4,5,6,7]' \
+-H 'authorization:{"object": "key", "value": 5}'
 ```
 
 Parameters:

@@ -25,19 +25,11 @@ if (program.endpoint === undefined) {
 const headers = program.headers
   .map((x: string) => {
     const [first, ...values] = x.split(":");
-    const clear = values
-      .join(":")
-      .replace(/^'/, "")
-      .replace(/^"/, "")
-      .replace(/'$/, "")
-      .replace(/"$/, "")
-      .trim();
+    const clear = values.join(":").replace(/^'/, "").replace(/^"/, "").replace(/'$/, "").replace(/"$/, "").trim();
     return { [first]: `${clear}` };
   })
   .reduce((acc: any, el: any) => ({ ...acc, ...el }), {});
 
-const url = `${program.endpoint}`.startsWith("http")
-  ? program.endpoint
-  : `https://${program.endpoint}`;
+const url = `${program.endpoint}`.startsWith("http") ? program.endpoint : `https://${program.endpoint}`;
 
-playground(url, Number.parseInt(program.port), headers);
+playground(url, Number.parseInt(program.port || 1337), headers);
