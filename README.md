@@ -4,11 +4,18 @@
 
 **Only manual install**
 
-Check if you has NodeJS installed. If not, I suggest [nvm](https://github.com/nvm-sh/nvm).
+Check your $PATH. Maybe you need to add the `$HOME/.local/bin/` to your `$HOME`
+
+```bash
+mkdir -p $HOME/.local/bin
+```
+
+NodeJS must be installed before all. If not, I suggest [nvm](https://github.com/nvm-sh/nvm).
 
 ```bash
 bash install.sh
 ```
+
 
 ### How to use
 

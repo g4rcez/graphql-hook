@@ -19,7 +19,9 @@ export const playground = async (
       },
     }),
     debug: true,
-    uploads: false,
+    uploads: true,
+    tracing: true,
+    playground: true,
     introspection: true,
     cors: true,
     formatResponse: (res, query): any => {

@@ -6,6 +6,7 @@ import { playground } from "./helpers/playground";
 const collect = (value: string, previous: string[]) => previous.concat([value]);
 
 const program = new Command();
+
 program
   .version("0.0.1")
   .option("-e, --endpoint <url>", "Set endpoint to use")
@@ -18,11 +19,13 @@ program
   )
   .parse(process.argv);
 
-if (program.endpoint === undefined) {
+const opts = program.opts();
+
+if (opts.endpoint === undefined) {
   program.help();
 }
 
-const headers = program.headers
+const headers = opts.headers
   .map((x: string) => {
     const [first, ...values] = x.split(":");
     const clear = values.join(":").replace(/^'/, "").replace(/^"/, "").replace(/'$/, "").replace(/"$/, "").trim();
@@ -30,6 +33,6 @@ const headers = program.headers
   })
   .reduce((acc: any, el: any) => ({ ...acc, ...el }), {});
 
-const url = `${program.endpoint}`.startsWith("http") ? program.endpoint : `https://${program.endpoint}`;
+const url = `${opts.endpoint}`.startsWith("http") ? opts.endpoint : `https://${opts.endpoint}`;
 
-playground(url, Number.parseInt(program.port || 1337), headers);
+playground(url, Number.parseInt(opts.port || 1337), headers);
